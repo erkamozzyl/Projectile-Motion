@@ -484,6 +484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1994493941}
   - component: {fileID: 1994493940}
+  - component: {fileID: 1994493942}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -507,6 +508,7 @@ MonoBehaviour:
   ball: {fileID: 1321693130947089642, guid: 79db4cf15f27644baa452112e19fff17, type: 3}
   target: {fileID: 5104478500020306798, guid: 36863c187f3734128b58598ccffbb6ed, type: 3}
   readyToThrow: 0
+  destroyObjects: 0
 --- !u!4 &1994493941
 Transform:
   m_ObjectHideFlags: 0
@@ -521,3 +523,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1994493942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994493939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36431ab0244ab4ae5aade143271ead7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hMax: 0
+  speed: 0
+  firstPosX: 0
+  destination: {x: 0, y: 0, z: 0}
+  destinationY: 0
+  startObject: {fileID: 0}
+  endObject: {fileID: 0}
+  inThrow: 0
