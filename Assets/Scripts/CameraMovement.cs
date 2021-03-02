@@ -11,11 +11,11 @@ public class CameraMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.up * (cameraMovementSpeed * Time.deltaTime));
+            transform.Translate(new Vector3(0,1,1) * (cameraMovementSpeed * Time.deltaTime));
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.down * (cameraMovementSpeed * Time.deltaTime));
+            transform.Translate(new Vector3(0,-1,-1) * (cameraMovementSpeed * Time.deltaTime));
         }
         if (Input.GetKey(KeyCode.A))
         {

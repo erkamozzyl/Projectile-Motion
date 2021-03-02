@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
-                    Instantiate(target, hit.point, Quaternion.identity);
+                    Instantiate(target, new Vector3(hit.point.x,0,hit.point.z), Quaternion.identity);
                 }
 
                 destroyObjects = true;
@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
                     Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                     if (Physics.Raycast(ray, out hit))
                     {
-                        Instantiate(ball, hit.point, Quaternion.identity);
+                        Instantiate(ball, new Vector3(hit.point.x,0,hit.point.z), Quaternion.identity);
                     }
                     readyToThrow = true;
                 }
