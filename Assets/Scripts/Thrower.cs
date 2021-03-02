@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class Thrower : MonoBehaviour
 {
-    public int hMax;
+    public float hMax;
     public float speed;
     public float firstPosX;
     public Vector3 destination;
     public float destinationY;
+    public float destinationX;
     public GameObject startObject;
     public GameObject endObject;
     public bool inThrow;
@@ -30,8 +31,9 @@ public class Thrower : MonoBehaviour
         if (inThrow)
         {
         startObject.transform.Translate(destination * (Time.deltaTime * speed));
-     
-     
+
+      
+      
           
 
           if (firstPosX < 0)
@@ -103,6 +105,8 @@ public class Thrower : MonoBehaviour
         destination = endObject.transform.position - startObject.transform.position;
         firstPosX = startObject.transform.position.x;
         destinationY = destination.y;
+        destinationX = destination.x;
+        
   
         
         inThrow = true;
