@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
             {
                 RaycastHit hit;
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Ground"))
                 {
                     Instantiate(target, new Vector3(hit.point.x,0,hit.point.z), Quaternion.identity);
                 }
@@ -30,18 +30,23 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                if (destroyObjects == true)
+                RaycastHit hit;
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+                if (destroyObjects && Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Ground"))
                 {
                     Destroy (GameObject.FindWithTag("Ball"));
                     Destroy (GameObject.FindWithTag("Target"));
                     destroyObjects = false;
+                } else if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("UI"))
+                {
+                    destroyObjects = true;
                 }
                 else
                 {
-                    RaycastHit hit;
-                    Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                    if (Physics.Raycast(ray, out hit))
+                    
+                    if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Ground"))
                     {
+                        
                         Instantiate(ball, new Vector3(hit.point.x,0,hit.point.z), Quaternion.identity);
                     }
                     readyToThrow = true;

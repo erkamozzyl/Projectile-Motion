@@ -5,8 +5,13 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public float cameraMovementSpeed;
+    public Transform cameraRotate;
+    public float cameraRotateSpeed;
+    private float h;
+    private float v;
+   
 
-    // Update is called once per frame
+   
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
@@ -25,6 +30,20 @@ public class CameraMovement : MonoBehaviour
         {
             transform.Translate(Vector3.right * (cameraMovementSpeed * Time.deltaTime));
         }
-        
+
+        if (Input.GetMouseButton(2))
+        {
+            h += cameraRotateSpeed * Input.GetAxis("Mouse X");
+            cameraRotate.eulerAngles = new Vector3(0, h, 0f);
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f ) 
+        {
+            cameraRotate.Translate(0, -10 * Time.deltaTime,0);
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) 
+        {
+            cameraRotate.Translate(0, 10 * Time.deltaTime,0);
+        }
+
     }
 }
