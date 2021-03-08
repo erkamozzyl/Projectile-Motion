@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -38,11 +37,11 @@ public class CameraMovement : MonoBehaviour
         }
         if (Input.GetAxis("Mouse ScrollWheel") > 0f ) 
         {
-            cameraRotate.Translate(0, -10 * Time.deltaTime,0);
+            cameraRotate.Translate(0, -20 * Time.deltaTime,0);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f) 
         {
-            cameraRotate.Translate(0, 10 * Time.deltaTime,0);
+            cameraRotate.Translate(0, 20 * Time.deltaTime,0);
         }
 
     }

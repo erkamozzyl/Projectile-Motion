@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -9,9 +8,15 @@ public class Spawner : MonoBehaviour
     public GameObject target;
     public bool readyToThrow;
     public bool destroyObjects;
- 
+    public Thrower thrower;
 
-    // Update is called once per frame
+
+ 
+    public void Initialize()
+    {
+        thrower = FindObjectOfType<Thrower>();
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -24,7 +29,7 @@ public class Spawner : MonoBehaviour
                 {
                     Instantiate(target, new Vector3(hit.point.x,0,hit.point.z), Quaternion.identity);
                 }
-
+                
                 destroyObjects = true;
                 readyToThrow = false;
             }
@@ -34,8 +39,16 @@ public class Spawner : MonoBehaviour
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 if (destroyObjects && Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Ground"))
                 {
+
                     Destroy (GameObject.FindWithTag("Ball"));
                     Destroy (GameObject.FindWithTag("Target"));
+                    thrower.inThrow = false;
+                    
+                    
+                    
+                    
+                    
+                    
                     destroyObjects = false;
                 } else if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("UI"))
                 {
@@ -46,10 +59,12 @@ public class Spawner : MonoBehaviour
                     
                     if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Ground"))
                     {
-                        
                         Instantiate(ball, new Vector3(hit.point.x,0,hit.point.z), Quaternion.identity);
+                        
+                      
+                      readyToThrow = true;
                     }
-                    readyToThrow = true;
+                    
                 }
             }
           
